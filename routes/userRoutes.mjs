@@ -10,9 +10,22 @@ router.post("/", async (req, res) => {
   res.json(newUser).status(201);
 });
 
-// read
-
 // readAll
+router.get("/", async (req, res) => {
+  let getUsers = await Users.find({});
+  res.json(getUsers).status(200);
+});
+
+// read by id
+router.get("/:id", async (req, res) => {
+  let getUser = await Users.findById(req.params.id);
+
+  if (!getUser) {
+    return res.json({ message: `user not fund` }).status(404);
+  }
+
+  res.json(getUser).status(200);
+});
 
 // update
 
