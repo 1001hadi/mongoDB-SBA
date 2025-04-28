@@ -1,9 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
+import connectDB from "./db/conn.mjs";
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
+connectDB();
 
 // middlewares
 app.use(express.json());
