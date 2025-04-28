@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./db/conn.mjs";
 import { globalErr } from "./middlewares/errMiddleware.mjs";
 import userRoutes from "./routes/userRoutes.mjs";
+import taskRoutes from "./routes/taskRoutes.mjs";
 
 dotenv.config();
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/user", userRoutes);
+app.use("/api/task", taskRoutes);
 
 // global error Middlewares
 app.use(globalErr);

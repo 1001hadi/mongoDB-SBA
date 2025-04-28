@@ -41,7 +41,7 @@ const taskSchema = new mongoose.Schema(
       required: [true, "Task must be assign to a user"],
       index: true,
     },
-    createdBy: { type: Date, default: Date.now, immutable: true },
+    createdDate: { type: Date, default: Date.now, immutable: true },
     updateDate: { type: Date },
   }
   //   { timestamps: true }
