@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
   let getUser = await Users.findById(req.params.id);
 
   if (!getUser) {
-    return res.json({ message: `user not fund` }).status(404);
+    return res.json({ msg: `user not fund` }).status(404);
   }
 
   res.json(getUser).status(200);
