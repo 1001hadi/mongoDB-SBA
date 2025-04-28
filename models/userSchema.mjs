@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     minLength: [3, "Username can't be less than 3 characters long"],
     maxLength: [20, "Username can't be more than 20 characters long"],
+    // to create index with mongoose
     index: true,
   },
   email: {
@@ -38,9 +39,14 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please provide your email address"],
     trim: true,
     unique: true,
-    match: [/.+@.+\..+/, "Email address must be valid !"],
+    match: [
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Email address must be valid !",
+    ],
+    // to create index with mongoose
     index: true,
   },
+  //   to get date of register
   registrationDate: {
     type: Date,
     default: Date.now,
