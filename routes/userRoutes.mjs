@@ -28,7 +28,23 @@ router.get("/:id", async (req, res) => {
 });
 
 // update
+router.put("/:id", async (req, res) => {
+  let updateUser = await Users.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  if (!updateUser) {
+    res.json({ msg: "can't update the given user!" }).status(400);
+  }
+
+  res.json(updateUser).status(201);
+});
 
 // delete
+router.delete("/:id", async (req, res) => {
+  let deleteUser = await Users.findByIdAndDelete(req.params.id);
+
+  res.json(deleteUser).status(201);
+});
 
 export default router;
