@@ -3,6 +3,26 @@ import Tasks from "../models/taskSchema.mjs";
 
 const router = express.Router();
 
+// search route
+router.get("/search", async (req, res) => {
+  // console.log(searchTerm);
+  const searchQuery = req.query.query;
+
+  if (!searchQuery) {
+    return res.status(400).json({ msg: "Missing search query" });
+  }
+
+  try {
+    const tasks = await Tasks.find({
+      title: { $regex: searchQuery, $options: "i" },
+    });
+
+    res.status(200).json(tasks);
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
 // create
 router.post("/", async (req, res) => {
   let newTask = await new Tasks(req.body);

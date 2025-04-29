@@ -43,8 +43,11 @@ const taskSchema = new mongoose.Schema(
     },
     createdDate: { type: Date, default: Date.now, immutable: true },
     updateDate: { type: Date },
+  },
+  {
+    timestamps: true,
+    index: { title: "text", description: "text" },
   }
-  //   { timestamps: true }
 );
 
 export default mongoose.model("Tasks", taskSchema);
