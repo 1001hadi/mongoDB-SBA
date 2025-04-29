@@ -1,26 +1,25 @@
-import mongoose from "mongoose";
-
 const seedTasks = [
   {
-    title: "Implement User Authentication",
-    description: "Set up Passport.js for user login and registration.",
+    title: "Hadi's personal website!",
+    description: "Create my personal website with MERN stack",
     status: "in progress",
     priority: "high",
     dueDate: new Date("2025-05-26"),
     assignedTo: "680fe1c6af31d30bcb657a56",
   },
   {
-    title: "Design Task List UI",
-    description: "Create the frontend components for displaying tasks.",
+    title: "Design task list UI with React.js",
+    description:
+      "Create the frontend components for displaying tasks with React.js",
     status: "open",
     priority: "medium",
     dueDate: new Date("2025-05-18"),
     assignedTo: "680feedb37cd77619f6fee14",
   },
   {
-    title: "Write API Endpoints for Comments",
+    title: "Write API endpoints for comments",
     description:
-      "Develop the backend routes and logic for creating and retrieving comments.",
+      "Develop the backend routes and logic for creating and retrieving comments",
     status: "open",
     priority: "low",
     dueDate: new Date("2025-06-16"),

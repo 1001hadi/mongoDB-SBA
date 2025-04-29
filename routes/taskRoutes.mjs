@@ -1,5 +1,6 @@
 import express from "express";
 import Tasks from "../models/taskSchema.mjs";
+import seedTasks from "../utilities/seedData.mjs";
 
 const router = express.Router();
 
@@ -65,6 +66,21 @@ router.delete("/:id", async (req, res) => {
   let deleteTask = await Tasks.findByIdAndDelete(req.params.id);
 
   res.json(deleteTask).status(200);
+});
+
+// // seed route
+router.post("/seed", async (req, res) => {
+  try {
+    await Tasks.deleteMany({});
+    const addSeedTask = await Tasks.insertMany(seedTasks);
+
+    res.status(201).json({
+      message: "Seed task added!",
+      data: addSeedTask,
+    });
+  } catch (err) {
+    console.error("Error adding seed tasks:", err);
+  }
 });
 
 export default router;
