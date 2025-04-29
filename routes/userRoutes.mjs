@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   let deleteUser = await Users.findByIdAndDelete(req.params.id);
 
-  res.json(deleteUser).status(201);
+  res.json(deleteUser).status(200);
 });
 
 export default router;

@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   let deleteTask = await Tasks.findByIdAndDelete(req.params.id);
 
-  res.json(deleteTask).status(201);
+  res.json(deleteTask).status(200);
 });
 
 export default router;
