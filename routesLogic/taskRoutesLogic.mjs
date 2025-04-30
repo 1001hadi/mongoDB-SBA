@@ -50,7 +50,7 @@ export async function searchTask(req, res) {
   const searchQuery = req.query.query;
 
   if (!searchQuery) {
-    return res.status(400).json({ msg: "Missing search query" });
+    return res.json({ msg: "Missing search query" }).status(400);
   }
 
   try {
@@ -58,9 +58,9 @@ export async function searchTask(req, res) {
       title: { $regex: searchQuery, $options: "i" },
     });
 
-    res.status(200).json(tasks);
+    res.json(tasks).status(200);
   } catch (err) {
-    res.status(500).json({ msg: err.message });
+    res.json({ msg: err.message }).status(500);
   }
 }
 
@@ -70,10 +70,12 @@ export async function addSeedTask(req, res) {
     await Tasks.deleteMany({});
     const addSeedTask = await Tasks.insertMany(seedTasks);
 
-    res.status(201).json({
-      message: "Seed task added!",
-      data: addSeedTask,
-    });
+    res
+      .json({
+        message: "Seed task added!",
+        data: addSeedTask,
+      })
+      .status(201);
   } catch (err) {
     console.error("Error adding seed tasks:", err);
   }
